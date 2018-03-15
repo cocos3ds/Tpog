@@ -28,7 +28,7 @@
             <td><input type="text" name="code"></td>
         </tr>
         <tr>
-            <td><div>{:captcha_img()}</div></td>
+            <td><div><img src="{:captcha_src()}" alt="验证码" onclick="this.src='{:captcha_src()}'+'?d='+Math.random()"></div></td>
         </tr>
         <tr>
             <td><input type="submit" value="注册"></td>

@@ -34,7 +34,14 @@ class Login extends Controller{
             session('username',$username);
             $this->success('登录成功',url('admin/index/index'));
         }
+    }
 
+    public function loginout(){
+        if(!session('username')){
+            $this->error('请登录');
+        }
 
+        session('username',null);
+        $this->success('已退出');
     }
 }
