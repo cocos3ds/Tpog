@@ -15,6 +15,7 @@ class Index extends Controller
     public function index()
     {
         if(session('username')){
+            $this->assign('username',session('username'));
             return $this->fetch();
         }else{
             return $this->redirect(url('admin/login/index'));
