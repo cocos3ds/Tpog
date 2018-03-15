@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
+use \think\facade\Route;
 
 Route::get('think', function () {
     return 'hello,ThinkPHP5!';
@@ -19,7 +20,9 @@ Route::rule('hello/:name', function ($name) {
     return 'Hello,' . $name . '!';
 });
 
+Route::resource('article','admin/article');
+
+
 return [
     'admin$'=>'admin/index/index',
-
 ];

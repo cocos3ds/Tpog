@@ -36,7 +36,7 @@ class Login extends Controller{
         }
     }
 
-    public function loginout(){
+    public function logout(){
         if(!session('username')){
             $this->error('请登录');
         }
@@ -44,4 +44,6 @@ class Login extends Controller{
         session('username',null);
         $this->success('已退出');
     }
+
+
 }
