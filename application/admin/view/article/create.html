@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>新建文章</title>
+    <script src="__PUBLIC__/js/wangEditor.min.js"></script>
 </head>
 <body>
-<h1>新建文章</h1>
+<h1>添加文章</h1>
+<div id="content">
 
+</div>
+
+<script>
+    var E = window.wangEditor;
+    var editor = new E('#content');
+    // editor.customConfig.uploadImgServer = '/upload';
+    editor.customConfig.uploadImgShowBase64 = true;
+    editor.create();
+
+</script>
 </body>
 </html>
