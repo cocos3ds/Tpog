@@ -7,6 +7,17 @@ use think\Request;
 
 class Article extends Controller
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        if(session('username')){
+            $this->assign('username',session('username'));
+        }else{
+            return $this->redirect(url('admin/login/index'));
+        }
+    }
+
     /**
      * 显示资源列表
      *
@@ -36,7 +47,27 @@ class Article extends Controller
      */
     public function save(Request $request)
     {
-        //
+        $content = input('post.m_content');
+
+        echo $content;
+    }
+
+    /**
+     * 文章的处理上传图片
+     */
+    public function uploadimg(){
+        $file = request()->file('image');
+        $info = $file->move('./uploads');
+        if($info){
+            $result = array('errno'=>'0');
+            $data = array('http://'.request()->server('HTTP_HOST').'/uploads/'.$info->getSavename());
+            $result['data']= $data;
+            echo json_encode($result);
+        }else{
+            $result  = array('error'=>$file->getError());
+            echo json_encode($result);
+        }
+
     }
 
     /**

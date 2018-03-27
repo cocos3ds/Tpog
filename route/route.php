@@ -21,7 +21,7 @@ Route::rule('hello/:name', function ($name) {
 });
 
 Route::resource('article','admin/article');
-
+Route::post('uploadimg','admin/article/uploadimg');
 
 return [
     'admin$'=>'admin/index/index',
