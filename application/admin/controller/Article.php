@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use think\Controller;
+use think\Db;
 use think\Request;
 
 class Article extends Controller
@@ -49,7 +50,8 @@ class Article extends Controller
     {
         $content = input('post.m_content');
 
-        echo $content;
+        Db::table('article')->insert(['content'=>$content]);
+
     }
 
     /**
