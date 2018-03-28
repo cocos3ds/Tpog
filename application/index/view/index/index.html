@@ -16,13 +16,13 @@
             <div class="panel-body">
                 <div class="list-group">
                     {foreach $articles as $article}
-                    <a class="list-group-item" href="/article/{$article.id}">{$article.title}</a>
+                    <a class="list-group-item" href="/article/{$article.id}">{$article.title} <p class="text-right">{$article.create_time}</p></a>
                     {/foreach}
                 </div>
             </div>
         </div>
 
-       
+
 
     </div>
 

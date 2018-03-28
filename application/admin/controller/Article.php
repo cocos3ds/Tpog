@@ -5,6 +5,7 @@ namespace app\admin\controller;
 use think\Controller;
 use think\Db;
 use think\Request;
+use app\common\model\Article as ArticleModel;
 
 class Article extends Controller
 {
@@ -51,8 +52,12 @@ class Article extends Controller
         $title = input('post.m_title');
         $content = input('post.m_content');
 
-        Db::table('article')->insert(['content'=>$content,'title'=>$title]);
-        $this->success('添加成功','/article/create');
+        $article = new ArticleModel();
+        if($article->save(['title'=>$title,'content'=>$content])){
+            $this->success('添加成功','/article/create');
+        }
+
+
 
     }
 

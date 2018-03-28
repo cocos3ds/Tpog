@@ -9,7 +9,12 @@ class Index extends Controller
     public function index()
     {
         $articles = Db::table('article')->select();
+        foreach($articles as &$article){
+            $article['create_time'] = date('Y-m-d',$article['create_time']);
+        }
+
         $this->assign('articles',$articles);
+
         return $this->fetch();
     }
 
