@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018-03-27 11:49:09
+-- Generation Time: 2018-03-28 09:45:37
 -- 服务器版本： 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `article` (
   `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -37,8 +38,10 @@ CREATE TABLE `article` (
 -- 转存表中的数据 `article`
 --
 
-INSERT INTO `article` (`id`, `content`) VALUES
-(1, '<p>将速度快解放空间卡加快递费<img src=\"http://www.mytpog.io/uploads/20180327/76c664d5423dc17ae2daad9c80083474.jpg\" style=\"max-width: 100%;\"></p>');
+INSERT INTO `article` (`id`, `title`, `content`) VALUES
+(3, '今日头条', '<p>今日头条</p>'),
+(4, '大家好', '<p>今日特别节目</p>'),
+(5, 'HelloWorld', '<p><img src=\"http://www.mytpog.io/uploads/20180328/259cf8273b3fa740119b60d0b28af4e1.jpg\" style=\"max-width:100%;\"><span style=\"color: rgb(194, 79, 74);\">军训</span><br></p>');
 
 -- --------------------------------------------------------
 
@@ -84,7 +87,7 @@ ALTER TABLE `user`
 -- 使用表AUTO_INCREMENT `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用表AUTO_INCREMENT `user`

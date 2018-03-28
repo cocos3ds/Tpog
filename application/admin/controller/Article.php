@@ -48,9 +48,11 @@ class Article extends Controller
      */
     public function save(Request $request)
     {
+        $title = input('post.m_title');
         $content = input('post.m_content');
 
-        Db::table('article')->insert(['content'=>$content]);
+        Db::table('article')->insert(['content'=>$content,'title'=>$title]);
+        $this->success('添加成功','/article/create');
 
     }
 
@@ -60,9 +62,12 @@ class Article extends Controller
     public function uploadimg(){
         $file = request()->file('image');
         $info = $file->move('./uploads');
+        $server = request();
+        $protocol = explode('/',$server->server('SERVER_PROTOCOL'))[0];
+        $protocol  = strtolower($protocol);
         if($info){
             $result = array('errno'=>'0');
-            $data = array('http://'.request()->server('HTTP_HOST').'/uploads/'.$info->getSavename());
+            $data = array($protocol.'://'.$server->server('HTTP_HOST').'/uploads/'.$info->getSavename());
             $result['data']= $data;
             echo json_encode($result);
         }else{
@@ -80,7 +85,10 @@ class Article extends Controller
      */
     public function read($id)
     {
-        //
+        $article = Db::table('article')->find($id);
+        $this->assign('article',$article);
+        return $this->fetch();
+
     }
 
     /**
